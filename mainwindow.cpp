@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "neteaseapi.h"
+#include <QCryptographicHash>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -17,9 +18,9 @@ MainWindow::~MainWindow()
 void MainWindow::Test()
 {
     QVariantMap data;
-    data["username"] = "chao4150443@163.com";
-    data["password"] = "7c3a8f898d0e9fa3b4f9fa1d48486ea7";
+    data["username"] = ui->tb_Email->text();
+    data["password"] = QCryptographicHash::hash(ui->tb_Password->text().toUtf8(), QCryptographicHash::Md5).toHex();
     data["rememberLogin"] = "true";
     QJsonDocument json = QJsonDocument::fromVariant(data);
-    DoRequest(POST,QUrl("https://music.163.com/weapi/login"),json);
+    DoRequest(POST,QUrl("http://music.163.com/weapi/login"),json);
 }

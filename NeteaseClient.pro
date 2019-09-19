@@ -27,13 +27,11 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-        neteaseapi.cpp \
-        qaesencryption.cpp
+        neteaseapi.cpp
 
 HEADERS += \
         mainwindow.h \
-        neteaseapi.h \
-        qaesencryption.h
+        neteaseapi.h
 
 FORMS += \
         mainwindow.ui
